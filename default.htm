@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="system.js"></script>
+
+    <style>
+        #root th, td { border: 1px solid black; padding: 5px; margin: 5px; }
+    </style>
+
+
+    <script type="text/javascript">
+
+        System.config({
+            packages: {
+                '': { //this is the root, catch-all package
+                    defaultExtension: 'js'
+                }
+            },
+            map: {
+                'react': 'assets/react',
+                'react-dom': 'assets/react-dom',
+                'mobx': 'assets/mobx',
+                'mobx-react': 'assets/mobx-react'
+            }
+        });
+        System.import('./index');
+
+    </script>
+</head>
+<body>
+
+    <div id="root"></div>
+
+</body>
+</html>
