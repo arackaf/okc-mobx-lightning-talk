@@ -8,7 +8,15 @@ class BooksStore{
     @action setSearch = value => this.search = value;
     @observable books = [];
 
-    @action runSearch = () => this.books = booksData.filter(book => !this.search || new RegExp(this.search, 'i').test(book.title))
+    @action runSearch = () => this.books = booksData.filter(book => !this.search || new RegExp(this.search, 'i').test(book.title));
+
+    constructor(){
+        autorun(() => {
+            let currentSearch = this.search;
+
+            console.log('Changed to', currentSearch || '<empty>');
+        });
+    }
 }
 
 //----------------------------------------------------------------------------------------------------

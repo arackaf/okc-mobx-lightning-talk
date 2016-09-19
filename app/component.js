@@ -72,6 +72,8 @@ function _initializerWarningHelper(descriptor, context) {
 }
 
 var BooksStore = (_class = function BooksStore() {
+    var _this = this;
+
     _classCallCheck(this, BooksStore);
 
     _initDefineProp(this, 'search', _descriptor, this);
@@ -81,6 +83,12 @@ var BooksStore = (_class = function BooksStore() {
     _initDefineProp(this, 'books', _descriptor3, this);
 
     _initDefineProp(this, 'runSearch', _descriptor4, this);
+
+    (0, _mobx.autorun)(function () {
+        var currentSearch = _this.search;
+
+        console.log('Changed to', currentSearch || '<empty>');
+    });
 }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, 'search', [_mobx.observable], {
     enumerable: true,
     initializer: function initializer() {
@@ -89,10 +97,10 @@ var BooksStore = (_class = function BooksStore() {
 }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, 'setSearch', [_mobx.action], {
     enumerable: true,
     initializer: function initializer() {
-        var _this = this;
+        var _this2 = this;
 
         return function (value) {
-            return _this.search = value;
+            return _this2.search = value;
         };
     }
 }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, 'books', [_mobx.observable], {
@@ -103,11 +111,11 @@ var BooksStore = (_class = function BooksStore() {
 }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, 'runSearch', [_mobx.action], {
     enumerable: true,
     initializer: function initializer() {
-        var _this2 = this;
+        var _this3 = this;
 
         return function () {
-            return _this2.books = _books2.default.filter(function (book) {
-                return !_this2.search || new RegExp(_this2.search, 'i').test(book.title);
+            return _this3.books = _books2.default.filter(function (book) {
+                return !_this3.search || new RegExp(_this3.search, 'i').test(book.title);
             });
         };
     }
