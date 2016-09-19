@@ -41,3 +41,14 @@ class Main extends Component {
 }
 
 export default Main;
+
+/*
+
+NOTES
+
+- autorun
+- reducing edit field bpolerplate
+- transactions
+
+
+*/
