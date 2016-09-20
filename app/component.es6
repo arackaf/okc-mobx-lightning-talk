@@ -11,17 +11,18 @@ class BooksStore{
     runSearch = () => this.books = booksData.filter(book => !this.search || new RegExp(this.search, 'i').test(book.title));
 
     constructor(){
-        autorun(() => {
+        () => {
             let currentSearch = this.search;
 
             console.log('Changed to', currentSearch || '<empty>');
-        });
+        }
     }
 }
 
 //----------------------------------------------------------------------------------------------------
 
 const Store = new BooksStore();
+
 
 class Main extends Component {
     render(){
@@ -46,8 +47,9 @@ export default Main;
 NOTES
 
 - autorun
-- reducing edit field bpolerplate
+- reducing edit field boilerplate
 - transactions
+- perf
 
 
 */

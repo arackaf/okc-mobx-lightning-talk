@@ -45,7 +45,7 @@ var BooksStore = function BooksStore() {
         });
     };
 
-    (0, _mobx.autorun)(function () {
+    (function () {
         var currentSearch = _this.search;
 
         console.log('Changed to', currentSearch || '<empty>');
@@ -107,8 +107,9 @@ exports.default = Main;
 NOTES
 
 - autorun
-- reducing edit field bpolerplate
+- reducing edit field boilerplate
 - transactions
+- perf
 
 
 */
