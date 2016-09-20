@@ -4,18 +4,17 @@ import { observer } from 'mobx-react';
 import booksData from './books';
 
 class BooksStore{
-    search = '';
-    setSearch = value => this.search = value;
-    books = [];
+    @observable @editable search = '';
+    @observable books = [];
 
-    runSearch = () => this.books = booksData.filter(book => !this.search || new RegExp(this.search, 'i').test(book.title));
+    @action runSearch = () => this.books = booksData.filter(book => !this.search || new RegExp(this.search, 'i').test(book.title));
 
     constructor(){
-        () => {
+        autorun(() => {
             let currentSearch = this.search;
 
             console.log('Changed to', currentSearch || '<empty>');
-        }
+        });
     }
 }
 
@@ -23,7 +22,7 @@ class BooksStore{
 
 const Store = new BooksStore();
 
-
+@observer
 class Main extends Component {
     render(){
         return (
