@@ -4,11 +4,11 @@ import { observer } from 'mobx-react';
 import booksData from './books';
 
 class BooksStore{
-    @observable search = '';
-    @action setSearch = value => this.search = value;
-    @observable books = [];
+    search = '';
+    setSearch = value => this.search = value;
+    books = [];
 
-    @action runSearch = () => this.books = booksData.filter(book => !this.search || new RegExp(this.search, 'i').test(book.title));
+    runSearch = () => this.books = booksData.filter(book => !this.search || new RegExp(this.search, 'i').test(book.title));
 
     constructor(){
         autorun(() => {
@@ -23,7 +23,6 @@ class BooksStore{
 
 const Store = new BooksStore();
 
-@observer
 class Main extends Component {
     render(){
         return (
